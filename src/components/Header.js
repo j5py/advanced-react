@@ -63,6 +63,7 @@ const Header = () => {
           justifyContent="space-between"
           alignItems="center"
         >
+
           <nav>
             <HStack spacing='24px'>
               {
@@ -80,7 +81,7 @@ const Header = () => {
                     return cut.substring(index + 1)
                   })(a.url);
                   return (
-                    <Box key={domain} >
+                    <Box key={domain}>
                       <a href={a.url}>
                         <FontAwesomeIcon icon={a.icon} size="2x" />
                       </a>
@@ -90,11 +91,35 @@ const Header = () => {
               }
             </HStack>
           </nav>
+
+
           <nav>
             <HStack spacing={8}>
-              {/* Add links to Projects and Contact me section */}
+              {
+                ["Projects", "Contact Me"].map(string => {
+                  const slug = string.toLowerCase().replace(/\s+/g, '')
+                      , hash = `#${slug}-section`
+                      ;
+                  return (
+                    <Box key={slug}>
+                      <a
+                        href={hash}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleClick(slug)();
+                          window.history.pushState(null, '', hash)
+                        }}
+                      >
+                        {string}
+                      </a>
+                    </Box>
+                  )
+                })
+              }
             </HStack>
           </nav>
+
+
         </HStack>
       </Box>
     </Box>
