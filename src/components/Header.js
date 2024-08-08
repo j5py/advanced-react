@@ -64,7 +64,31 @@ const Header = () => {
           alignItems="center"
         >
           <nav>
-            {/* Add social media links based on the `socials` data */}
+            <HStack spacing='24px'>
+              {
+                socials.map(a => {
+                  const domain = (function(raw){
+                    let cut = raw.substring(0, raw.lastIndexOf('.'))
+                      , delimiters = ['@', '.', '/']
+                      , index = -1
+                      , i = 0
+                      ;
+                    while (i < delimiters.length && index === -1) {
+                      index = cut.lastIndexOf(delimiters[i]);
+                      i++
+                    }
+                    return cut.substring(index + 1)
+                  })(a.url);
+                  return (
+                    <Box key={domain} >
+                      <a href={a.url}>
+                        <FontAwesomeIcon icon={a.icon} size="2x" />
+                      </a>
+                    </Box>
+                  )
+                })
+              }
+            </HStack>
           </nav>
           <nav>
             <HStack spacing={8}>
