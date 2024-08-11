@@ -33,6 +33,21 @@ const socials = [
 ];
 
 const Header = () => {
+  const lastScrollPos = useRef(200);
+  const [navBarDisplay, setNavBarDisplay] = React.useState('translateY(0)');
+  
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  });
+
+  const handleScroll = () => {
+    setNavBarDisplay(window.scrollY > lastScrollPos.current ? 'translateY(-200px)' : 'translateY(0)');
+    lastScrollPos.current = window.scrollY
+  }
+
   const handleClick = (anchor) => () => {
     const id = `${anchor}-section`;
     const element = document.getElementById(id);
@@ -55,6 +70,7 @@ const Header = () => {
       transitionDuration=".3s"
       transitionTimingFunction="ease-in-out"
       backgroundColor="#18181b"
+      transform={navBarDisplay}
     >
       <Box color="white" maxWidth="1280px" margin="0 auto">
         <HStack
