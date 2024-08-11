@@ -9,7 +9,7 @@ The final project requires you to complete a portfolio in React. You will be pro
 
 This is a creative project, and the goal is to use as many React concepts as possible within this portfolio. You can use component composition, code reusability, hooks, manage state, interact with an external API, create forms, lists and so on.
 
-
+**Done**: please review the [Commits](https://github.com/j5py/advanced-react/commits/main/) following the [Instructions](https://github.com/j5py/advanced-react/blob/main/INSTRUCTIONS.md).
 
 
 ## Course Overview
